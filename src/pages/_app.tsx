@@ -1,7 +1,7 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
-
+import ThemeProvider from "@/components/theme-provider";
 import Layout from "@/components/layout";
 
 import { api } from "@/utils/api";
@@ -16,9 +16,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
 
   console.log(getLayout);
   return (
-    <SessionProvider session={session}>
-      {getLayout(<Component {...pageProps} />)}
-    </SessionProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <SessionProvider session={session}>
+        {getLayout(<Component {...pageProps} />)}
+      </SessionProvider>
+    </ThemeProvider>
   );
 };
 

@@ -1,31 +1,33 @@
 import Link from "next/link";
 import UserNav from "./user-nav";
+import ModeToggle from "./mode-toggle";
 
 export default function NavBar() {
   return (
-    <header className="sticky flex items-center h-16 px-4">
-      MyHub Web
-      <nav className="flex items-center mx-6 space-x-4 lg:space-x-6">
-        <Link
-          href="/"
-          className="text-sm font-medium transition-colors hover:text-primary"
-        >
-          主页
-        </Link>
+    <header className="flex h-16 items-center border-b px-4">
+      <Link
+        href="/"
+        className="text-lg font-bold transition-colors hover:text-primary"
+      >
+        MyHub
+      </Link>
+      <nav className="mx-24 flex items-center space-x-4 lg:space-x-6">
         <Link
           href="/task"
-          className="text-sm font-medium transition-colors text-muted-foreground hover:text-primary"
+          className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
         >
           任务
         </Link>
         <Link
           href="/note"
-          className="text-sm font-medium transition-colors text-muted-foreground hover:text-primary"
+          className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
         >
           笔记
         </Link>
       </nav>
-      <div className="flex items-center ml-auto space-x-4">
+
+      <div className="ml-auto flex items-center space-x-4">
+        <ModeToggle />
         <UserNav />
       </div>
     </header>
